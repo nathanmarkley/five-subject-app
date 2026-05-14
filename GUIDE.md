@@ -45,7 +45,6 @@ Live URL: `https://<your-username>.github.io/five-subject-app/`
 | `npm audit` | ✅ 0 vulnerabilities | All packages safe |
 | Your notes/files | ✅ Never leave your device | File System Access API is pure local |
 | Images | ✅ Stored as base64 in .md files | Stays on your machine |
-| GitHub token (PAT) | ⚠️ Stored in `localStorage` | Browser-local only — no server sees it. Don't use on a shared computer while logged in. |
 | Third-party scripts | ✅ None | No analytics, no tracking, no CDN |
 | Packages | ✅ All well-known | TipTap, Vite, marked, turndown, idb, vite-plugin-pwa, gh-pages |
 
@@ -61,9 +60,8 @@ Requires **Chrome, Edge, or Opera**. Safari and Firefox do not support the File 
 
 - Anyone with the GitHub Pages URL can open and use the app
 - Every user's notes live on **their own device** — no shared database
-- Your notes never leave your machine except when you use "Push to GitHub"
-- Your GitHub token is stored in your browser only — other users start with no token
-- Other users must enter their own token, owner, and repo in Settings to push anywhere
+- Notes never leave the device — the app has no network features
+- To back up notes, use GitHub Desktop to commit and push the notes folder
 
 ---
 
@@ -98,8 +96,7 @@ five-subject-app/
 │   ├── hooks/
 │   │   └── useFileSystem.js     # All File System Access API operations
 │   └── utils/
-│       ├── markdown.js          # Markdown ↔ HTML, frontmatter parsing
-│       └── github.js            # GitHub REST API push
+│       └── markdown.js          # Markdown ↔ HTML, frontmatter parsing
 ├── public/
 │   └── icons/                   # PWA icons
 ├── index.html

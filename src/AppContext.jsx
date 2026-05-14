@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import { useFileSystem } from './hooks/useFileSystem.js'
 import { parseNoteFile, buildNoteContent, noteTitle, slugify } from './utils/markdown.js'
-import { pushAllNotes } from './utils/github.js'
 
 const AppContext = createContext(null)
 
@@ -14,10 +13,6 @@ export function AppProvider({ children }) {
   const [editorHtml, setEditorHtml] = useState('')
   const [isDirty, setIsDirty] = useState(false)
   const [paperStyle, setPaperStyle] = useState('clean')
-  const [githubSettings, setGithubSettings] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('githubSettings') || '{}') } catch { return {} }
-  })
-  const [pushStatus, setPushStatus] = useState(null) // null | 'pushing' | 'done' | 'error'
   const [settingsOpen, setSettingsOpen] = useState(false)
 
   // Pane collapse state
@@ -32,7 +27,6 @@ export function AppProvider({ children }) {
 
   // Persist settings
   useEffect(() => { localStorage.setItem('paperStyle', paperStyle) }, [paperStyle])
-  useEffect(() => { localStorage.setItem('githubSettings', JSON.stringify(githubSettings)) }, [githubSettings])
 
   // Auto-select first notebook/subject after scan
   useEffect(() => {
@@ -183,26 +177,6 @@ export function AppProvider({ children }) {
     await fs.refreshNotes(fs.rootHandle)
   }, [selectedNotebook, fs])
 
-  const pushToGithub = useCallback(async () => {
-    const { token, owner, repo, branch } = githubSettings
-    if (!token || !owner || !repo) {
-      setSettingsOpen(true)
-      return
-    }
-    if (!fs.rootHandle) return
-    setPushStatus('pushing')
-    try {
-      const result = await pushAllNotes({ token, owner, repo, branch: branch || 'main', rootHandle: fs.rootHandle })
-      setPushStatus('done')
-      setTimeout(() => setPushStatus(null), 3000)
-      return result
-    } catch (e) {
-      setPushStatus('error:' + e.message)
-      setTimeout(() => setPushStatus(null), 6000)
-      throw e
-    }
-  }, [githubSettings, fs.rootHandle])
-
   return (
     <AppContext.Provider value={{
       ...fs,
@@ -210,8 +184,6 @@ export function AppProvider({ children }) {
       selectedSubject, setSelectedSubject,
       selectedNote, editorHtml, isDirty,
       paperStyle, setPaperStyle,
-      githubSettings, setGithubSettings,
-      pushToGithub, pushStatus,
       settingsOpen, setSettingsOpen,
       shelfCollapsed, setShelfCollapsed,
       tabsCollapsed, setTabsCollapsed,

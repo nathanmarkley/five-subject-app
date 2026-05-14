@@ -10,7 +10,12 @@ A progressive web app (PWA) for the Five Subject Notebook note-taking system. Re
 - Saves notes as plain `.md` files with YAML frontmatter on your local machine
 - Works offline after the first load
 - Installable as a desktop or mobile app via PWA
-- Optional: push notes to a GitHub repo from inside the app
+
+## Saving & backing up notes
+
+- **Ctrl+S** (or the Save button) saves the active note to your local files immediately
+- Notes are plain `.md` files — back them up however you like
+- Recommended: use **GitHub Desktop** to commit and push your notes folder to GitHub for version history and backup. Open your notes repo in GitHub Desktop, commit changes after editing sessions, and push to keep everything safe.
 
 ## Browser support
 
@@ -71,6 +76,5 @@ Note content here.
 
 ## Data & privacy
 
-- Notes never leave your device unless you use the GitHub push feature
-- Your GitHub token (if configured) is stored only in your browser's localStorage
+- Notes never leave your device — everything stays local
 - No analytics, no telemetry, no third-party scripts
