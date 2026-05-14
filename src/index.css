@@ -38,11 +38,72 @@ button { cursor: pointer; font-family: inherit; }
 input { font-family: inherit; }
 
 /* ============================================================
+   APP ROOT — column wrapper for top bar + pane layout
+   ============================================================ */
+.app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  min-height: 32px;
+  padding: 0 10px 0 12px;
+  background: var(--wood-bg);
+  border-bottom: 1px solid var(--wood-mid);
+  flex-shrink: 0;
+  z-index: 50;
+}
+.top-bar-title {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.01em;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.top-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.top-bar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+}
+.top-bar-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
+}
+
+/* ============================================================
    APP SHELL — 4-pane layout
    ============================================================ */
 .app-shell {
   display: flex;
-  height: 100vh;
+  flex: 1;
+  min-height: 0;
   width: 100vw;
   overflow: hidden;
   background: var(--shell-bg);
@@ -585,22 +646,6 @@ input { font-family: inherit; }
   transition: background var(--transition), color var(--transition);
 }
 .settings-btn:hover { background: #e8e4db; color: #333; }
-.shelf-settings-btn {
-  position: absolute;
-  bottom: 56px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 28px; height: 28px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 50%;
-  color: rgba(255,255,255,0.5);
-  z-index: 20;
-  flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  transition: background var(--transition), color var(--transition);
-}
-.shelf-settings-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
 
 /* ============================================================
    SETTINGS PANEL

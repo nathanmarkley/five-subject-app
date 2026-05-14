@@ -54,6 +54,16 @@ export default function SettingsPanel() {
               View full license on GitHub
             </a>
           </p>
+          <p className="settings-hint">
+            <a
+              href="https://github.com/nathanmarkley/five-subject-app/issues/new/choose"
+              target="_blank"
+              rel="noreferrer"
+              className="settings-about-link"
+            >
+              Submit feedback or report an issue
+            </a>
+          </p>
         </section>
       </aside>
     </>
