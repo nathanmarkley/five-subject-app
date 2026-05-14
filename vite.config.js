@@ -27,7 +27,8 @@ export default defineConfig({
         theme_color: '#2c1a0e',
         background_color: '#2c1a0e',
         display: 'standalone',
-        start_url: '/five-subject/',
+        scope: '/five-subject-app/',
+        start_url: '/five-subject-app/',
         icons: [
           {
             src: 'icons/icon-192.png',
