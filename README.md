@@ -79,6 +79,10 @@ Note content here.
 - Notes never leave your device — everything stays local
 - No analytics, no telemetry, no third-party scripts
 
+## License
+
+This project is licensed under the Business Source License 1.1 (BUSL-1.1). Free for personal, non-commercial use. Commercial use requires a license from the author. Modifications are only permitted as contributions to this project. On May 14, 2040 this license converts to GNU General Public License v3.0.
+
 ## Contributing
 
 Found a bug or have an idea for a new feature? I'd love to hear from you! Head over to the [Issues tab](../../issues) and open a new issue — there are templates for both **bug reports** and **feature requests** to make it easy.
