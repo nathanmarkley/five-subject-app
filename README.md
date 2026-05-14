@@ -1,59 +1,34 @@
 # Five Subject Notebook App (working title)
 
-A progressive web app (PWA) for the Five Subject Notebook note-taking system. Reads and writes plain Markdown files directly on your device — no backend, no cloud sync required.
+A note-taking app that works like a physical five-subject notebook. Your notes are saved as plain files on your own device — no account, no cloud, no subscription required.
 
 ## What it does
 
-- Browse notes organized by **Notebooks** → **Subjects** → **Notes**
-- Rich text editing (bold, italic, headings, lists, links, images)
-- Images can be resized and aligned directly in the editor
-- Saves notes as plain `.md` files with YAML frontmatter on your local machine
+- Organizes notes by **Notebooks → Subjects → Notes** — just like a real notebook
+- Rich text editing: bold, italic, headings, lists, links, and images
+- Images can be resized and aligned right in the editor
+- Saves to plain text files on your computer — easy to read, search, and back up
 - Works offline after the first load
-- Installable as a desktop or mobile app via PWA
+- Installable as a desktop or mobile app
 
 ## Saving & backing up notes
 
-- **Ctrl+S** (or the Save button) saves the active note to your local files immediately
-- Notes are plain `.md` files — back them up however you like
-- Recommended: use **GitHub Desktop** to commit and push your notes folder to GitHub for version history and backup. Open your notes repo in GitHub Desktop, commit changes after editing sessions, and push to keep everything safe.
+Ctrl+S (or the Save button) saves your note instantly to your chosen folder on your device. Your notes are plain `.md` files — they live on your computer, not in any cloud.
+
+You can back them up any way you like:
+- Copy the folder to an external drive or USB
+- Sync with Dropbox, OneDrive, or iCloud
+- Use GitHub Desktop to push to a private GitHub repo for version history
+
+No account required. No subscription. Your notes, your choice.
 
 ## Browser support
 
-Requires **Chrome, Edge, or Opera** (desktop or Android). The File System Access API used to read/write local files is not supported in Safari or Firefox.
+Requires **Chrome, Edge, or Opera** (desktop or Android). Safari and Firefox are not supported — they don't allow web apps to read and write local files directly. Chrome on Android works; iOS is not supported yet.
 
-## Running locally
+## How your notes are stored
 
-```powershell
-$env:PATH = "C:\Program Files\nodejs;" + $env:PATH
-npm install
-npm run dev
-```
-
-Then open `http://localhost:5173` in Chrome or Edge and click **Open Folder** to select your notes folder.
-
-## Deploying to GitHub Pages
-
-```powershell
-$env:PATH = "C:\Program Files\nodejs;" + $env:PATH
-npm run deploy
-```
-
-Builds the app and pushes to the `gh-pages` branch. In your GitHub repo settings → Pages, set the source to the `gh-pages` branch.
-
-Your app will be live at `https://<your-username>.github.io/five-subject-app/`
-
-## Tech stack
-
-- React 18 + Vite 6
-- TipTap (rich text editor)
-- `vite-plugin-pwa` — service worker + offline support
-- `idb` — persists the folder handle across browser sessions
-- `marked` + `turndown` — Markdown ↔ HTML conversion
-- `gh-pages` — deploys to GitHub Pages
-
-## Notes structure
-
-The app expects a folder with this layout (the same as the `five-subject` notes repo):
+The app reads from a folder you choose on your computer. Notes are organized like this:
 
 ```
 your-notes-folder/
@@ -62,17 +37,22 @@ your-notes-folder/
 │       └── note-title.md
 ```
 
-Each `.md` file uses YAML frontmatter:
+Each note is a plain text file you can open in any text editor.
 
-```markdown
----
-title: Note Title
-date: 2026-05-13
-tags: [tag1, tag2]
----
+## Running locally (for developers)
 
-Note content here.
+```powershell
+npm install
+npm run dev
 ```
+
+Then open `http://localhost:5173` in Chrome or Edge and click **Open Folder** to select your notes folder.
+
+## Built with
+
+- React + Vite
+- TipTap (rich text editor)
+- PWA support for offline use and installability
 
 ## Data & privacy
 
