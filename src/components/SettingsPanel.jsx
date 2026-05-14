@@ -31,7 +31,7 @@ export default function SettingsPanel() {
 
         <section className="settings-section">
           <h3>About</h3>
-          <p className="settings-hint">Five Subject Notebook v1.0.0</p>
+          <p className="settings-hint">Five Subject Notebook App (working title) v1.0.0</p>
           <p className="settings-hint">Notes are saved as plain Markdown files with YAML frontmatter.</p>
         </section>
       </aside>

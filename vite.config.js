@@ -21,8 +21,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/icon-192.png', 'icons/icon-512.png'],
       manifest: {
-        name: 'Five Subject',
-        short_name: 'Five Subject',
+        name: 'Five Subject Notebook App (working title)',
+        short_name: 'five-subject-notebook-app',
         description: 'A notebook-style PWA for personal and work notes',
         theme_color: '#2c1a0e',
         background_color: '#2c1a0e',

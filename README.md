@@ -1,4 +1,4 @@
-# Five Subject Notebook — App
+# Five Subject Notebook App (working title)
 
 A progressive web app (PWA) for the Five Subject Notebook note-taking system. Reads and writes plain Markdown files directly on your device — no backend, no cloud sync required.
 

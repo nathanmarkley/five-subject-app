@@ -113,7 +113,7 @@ export default function Editor() {
               <line x1="22" y1="42" x2="48" y2="42" stroke="#ccc" strokeWidth="1.5"/>
             </svg>
           </div>
-          <h1 className="welcome-title">Five Subject Notebook</h1>
+          <h1 className="welcome-title">Five Subject Notebook App (working title)</h1>
           <p className="welcome-sub">Your notes, your files — no cloud required.</p>
           <button className="welcome-open-btn" onClick={openFolder}>
             Open Folder

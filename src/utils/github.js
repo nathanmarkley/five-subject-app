@@ -79,7 +79,7 @@ export async function pushAllNotes({ token, owner, repo, branch = 'main', rootHa
   // 6. Create commit
   const now = new Date().toISOString()
   const newCommit = await apiPost(`${base}/git/commits`, token, {
-    message: `notes: sync from Five Subject PWA (${now.slice(0, 10)})`,
+    message: `notes: sync from Five Subject Notebook App (${now.slice(0, 10)})`,
     tree: newTree.sha,
     parents: [latestSha],
   })
