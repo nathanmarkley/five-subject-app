@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/five-subject/',
+  base: '/five-subject-app/',
   build: {
     rollupOptions: {
       output: {
