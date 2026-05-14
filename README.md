@@ -78,3 +78,16 @@ Note content here.
 
 - Notes never leave your device — everything stays local
 - No analytics, no telemetry, no third-party scripts
+
+## Contributing
+
+Found a bug or have an idea for a new feature? I'd love to hear from you! Head over to the [Issues tab](../../issues) and open a new issue — there are templates for both **bug reports** and **feature requests** to make it easy.
+
+A few things already in the pipeline (no need to file these):
+
+- Paper style toggle — lined, grid, or plain white
+- Improved iOS mobile experience
+- Themes and custom notebook cover colors
+- Custom notebook icons
+
+Outside of those, all feedback is welcome. This is a personal project shared with the community, so even small quality-of-life suggestions are appreciated.
