@@ -69,7 +69,7 @@ Requires **Chrome, Edge, or Opera**. Safari and Firefox do not support the File 
 
 **Sharing:** Send people the GitHub Pages URL — nothing else needed.
 
-**Open source:** Make the repo public, add a license (MIT is standard), update the README.
+**License:** This project is licensed under the Business Source License 1.1 (BUSL-1.1). Free for personal, non-commercial use. Commercial use requires a license from the author. Modifications are only permitted as contributions to this project. On May 14, 2040 this license converts to GNU General Public License v3.0. See the LICENSE file for full details or visit https://nathanmarkley.net for licensing inquiries.
 
 **App stores:** The PWA install prompt in Chrome/Edge is sufficient for most users. Submitting to the Google Play Store or Microsoft Store is possible but a separate process.
 
