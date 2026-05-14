@@ -5,7 +5,7 @@
 **Start the dev server:**
 ```powershell
 $env:PATH = "C:\Program Files\nodejs;" + $env:PATH
-cd "C:\Users\natha\OneDrive\Documents\code\five-subject-app"
+cd "path\to\five-subject-app"
 npm run dev
 ```
 Open `http://localhost:5173` in Chrome or Edge.
