@@ -658,7 +658,7 @@ input { font-family: inherit; }
 }
 .settings-panel {
   position: fixed;
-  left: 0; top: 0; bottom: 0;
+  right: 0; top: 0; bottom: 0;
   width: 320px;
   background: #fff;
   border-left: 1px solid #ddd;
