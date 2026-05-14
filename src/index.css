@@ -653,6 +653,9 @@ input { font-family: inherit; }
   font-weight: 600;
 }
 .settings-action-btn:hover { background: #1a4f8a; }
+.settings-about-legal { color: #888; }
+.settings-about-link { color: #888; text-decoration: underline; }
+.settings-about-link:hover { color: #444; }
 
 /* Paper style picker */
 .paper-options { display: flex; flex-direction: column; gap: 10px; }
