@@ -7,6 +7,7 @@ import Highlight from '@tiptap/extension-highlight'
 import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
 import Toolbar from './Toolbar.jsx'
+import TagsInput from './TagsInput.jsx'
 import ImageNodeView from './ImageNodeView.jsx'
 import { useApp } from '../AppContext.jsx'
 
@@ -60,7 +61,14 @@ export default function Editor() {
       StarterKit,
       Underline,
       Highlight,
-      Link.configure({ openOnClick: false }),
+      Link.configure({
+        openOnClick: true,
+        autolink: true,
+        HTMLAttributes: {
+          target: '_blank',
+          rel: 'noopener noreferrer',
+        },
+      }),
       ResizableImage,
     ],
     content: editorHtml,
@@ -160,14 +168,9 @@ export default function Editor() {
             onChange={(e) => updateFrontmatter('date', e.target.value)}
             aria-label="Note date"
           />
-          <input
-            className="meta-tags"
-            value={(frontmatter?.tags || []).join(', ')}
-            onChange={(e) =>
-              updateFrontmatter('tags', e.target.value.split(',').map((t) => t.trim()).filter(Boolean))
-            }
-            placeholder="tags, comma, separated"
-            aria-label="Note tags"
+          <TagsInput
+            tags={frontmatter?.tags || []}
+            onChange={(tags) => updateFrontmatter('tags', tags)}
           />
         </div>
       </div>

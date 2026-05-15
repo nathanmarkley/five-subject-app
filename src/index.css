@@ -449,17 +449,52 @@ input { font-family: inherit; }
   background: transparent;
   outline: none;
 }
-.meta-tags {
+.tags-input-container {
   flex: 1;
-  font-size: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
   border: 1px solid #ddd;
   border-radius: var(--radius);
-  padding: 3px 8px;
-  color: var(--text-muted);
-  background: transparent;
-  outline: none;
+  padding: 2px 6px;
+  min-height: 28px;
+  cursor: text;
 }
-.meta-tags:focus, .meta-date:focus { border-color: var(--accent-blue); color: var(--text-primary); }
+.tags-input-container:focus-within { border-color: var(--accent-blue); }
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #e8f0fb;
+  color: var(--accent-blue);
+  font-size: 0.75rem;
+  border-radius: 10px;
+  padding: 1px 7px 1px 8px;
+  white-space: nowrap;
+}
+.tag-chip-remove {
+  background: none;
+  border: none;
+  color: var(--accent-blue);
+  font-size: 0.85rem;
+  line-height: 1;
+  padding: 0 1px;
+  opacity: 0.6;
+}
+.tag-chip-remove:hover { opacity: 1; }
+.tags-text-input {
+  flex: 1;
+  min-width: 80px;
+  font-size: 0.8rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 1px 2px;
+}
+.tags-text-input::placeholder { color: #bbb; }
+.meta-date:focus { border-color: var(--accent-blue); color: var(--text-primary); }
 
 /* ============================================================
    TOOLBAR
