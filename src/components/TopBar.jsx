@@ -1,10 +1,27 @@
 import { useApp } from '../AppContext.jsx'
 
+const MOBILE_BACK = { editor: 'list', list: 'tabs', tabs: 'shelf' }
+
 export default function TopBar() {
-  const { setSettingsOpen } = useApp()
+  const { setSettingsOpen, mobilePane, setMobilePane } = useApp()
+
+  const handleBack = () => {
+    const prev = MOBILE_BACK[mobilePane]
+    if (prev) setMobilePane(prev)
+  }
 
   return (
     <header className="top-bar">
+      <button
+        className={`top-bar-btn top-bar-back-btn${mobilePane === 'shelf' ? ' hidden' : ''}`}
+        onClick={handleBack}
+        title="Back"
+        aria-label="Back"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
       <span className="top-bar-title">Five Subject Notebook App</span>
       <div className="top-bar-actions">
         <a

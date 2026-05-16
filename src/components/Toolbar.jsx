@@ -99,6 +99,19 @@ export default function Toolbar({ editor }) {
           <text x="2" y="7" fontSize="5" fill="currentColor">1</text>
         </svg>
       </button>
+      <button
+        className={`tb-btn ${editor.isActive('taskList') ? 'active' : ''}`}
+        onMouseDown={(e) => { e.preventDefault(); editor.chain().focus().toggleTaskList().run() }}
+        title="Task list (checkboxes)" aria-label="Task list"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="15" height="15" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="5" width="4" height="4" rx="0.5"/>
+          <path d="M4.5 7l1 1 1.5-1.5"/>
+          <rect x="3" y="13" width="4" height="4" rx="0.5"/>
+          <line x1="10" y1="7" x2="21" y2="7"/>
+          <line x1="10" y1="15" x2="21" y2="15"/>
+        </svg>
+      </button>
 
       {divider('d3')}
 

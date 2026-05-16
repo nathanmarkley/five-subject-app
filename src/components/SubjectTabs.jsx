@@ -39,6 +39,7 @@ export default function SubjectTabs() {
     setSelectedNote,
     tabsCollapsed, setTabsCollapsed,
     removeSubject, addSubject, doRenameSubject,
+    setMobilePane,
   } = useApp()
 
   const [adding, setAdding] = useState(false)
@@ -50,6 +51,7 @@ export default function SubjectTabs() {
   const selectSubject = (name) => {
     setSelectedSubject(name)
     setSelectedNote(null)
+    setMobilePane('list')
   }
 
   const handleCreate = async (slug) => {

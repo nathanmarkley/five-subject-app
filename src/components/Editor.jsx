@@ -6,6 +6,8 @@ import Underline from '@tiptap/extension-underline'
 import Highlight from '@tiptap/extension-highlight'
 import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
+import TaskList from '@tiptap/extension-task-list'
+import TaskItem from '@tiptap/extension-task-item'
 import Toolbar from './Toolbar.jsx'
 import TagsInput from './TagsInput.jsx'
 import ImageNodeView from './ImageNodeView.jsx'
@@ -70,6 +72,8 @@ export default function Editor() {
         },
       }),
       ResizableImage,
+      TaskList,
+      TaskItem.configure({ nested: false }),
     ],
     content: editorHtml,
     onUpdate({ editor }) {

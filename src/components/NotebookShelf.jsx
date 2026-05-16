@@ -60,6 +60,7 @@ export default function NotebookShelf() {
     shelfCollapsed, setShelfCollapsed,
     rootHandle, openFolder, loading,
     removeNotebook, addNotebook, doRenameNotebook,
+    setMobilePane,
   } = useApp()
 
   const [adding, setAdding] = useState(false)
@@ -72,6 +73,7 @@ export default function NotebookShelf() {
     if (nb?.subjects.length) setSelectedSubject(nb.subjects[0].name)
     else setSelectedSubject(null)
     setSelectedNote(null)
+    setMobilePane('tabs')
   }
 
   const handleCreate = async (slug) => {

@@ -27,7 +27,55 @@ td.addRule('richImage', {
   replacement: (content, node) => `\n\n${node.outerHTML}\n\n`,
 })
 
+// Convert TipTap task list items to GFM markdown
+td.addRule('taskItem', {
+  filter: (node) => node.getAttribute('data-type') === 'taskItem',
+  replacement: (content, node) => {
+    const checked = node.getAttribute('data-checked') === 'true'
+    // Content from TipTap taskItem has a <div> wrapper for text and a <label> for the checkbox
+    // Use the div's text if available; otherwise fall back to trimmed content
+    const div = node.querySelector('div')
+    const text = (div ? div.textContent : content).trim()
+    return `- [${checked ? 'x' : ' '}] ${text}\n`
+  },
+})
+
+// Wrap the task list container (prevent default UL handling)
+td.addRule('taskList', {
+  filter: (node) => node.nodeName === 'UL' && node.getAttribute('data-type') === 'taskList',
+  replacement: (content) => `\n\n${content.replace(/^\n+|\n+$/g, '')}\n\n`,
+})
+
 marked.setOptions({ gfm: true, breaks: false })
+
+// Convert GFM task list HTML (produced by marked) to TipTap's data-type format
+function convertGfmToTiptapTaskList(html) {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(`<div>${html}</div>`, 'text/html')
+  const root = doc.querySelector('div')
+
+  root.querySelectorAll('ul').forEach((ul) => {
+    if (!ul.querySelector('input[type="checkbox"]')) return
+    ul.setAttribute('data-type', 'taskList')
+    ul.querySelectorAll('li').forEach((li) => {
+      const checkbox = li.querySelector('input[type="checkbox"]')
+      if (!checkbox) return
+      const isChecked = checkbox.hasAttribute('checked')
+      li.setAttribute('data-type', 'taskItem')
+      li.setAttribute('data-checked', String(isChecked))
+      checkbox.remove()
+      // Wrap bare inline content in <p> so TipTap parses it correctly
+      if (!li.querySelector('p, ul, ol, h1, h2, h3, h4, h5, h6, pre, blockquote')) {
+        const p = doc.createElement('p')
+        p.innerHTML = li.innerHTML.trim()
+        li.innerHTML = ''
+        li.appendChild(p)
+      }
+    })
+  })
+
+  return root.innerHTML
+}
 
 // --- Frontmatter ---
 
@@ -66,7 +114,8 @@ export function serializeFrontmatter(fm) {
 // --- Conversion ---
 
 export function markdownToHtml(md) {
-  return marked.parse(md)
+  const html = marked.parse(md)
+  return convertGfmToTiptapTaskList(html)
 }
 
 export function htmlToMarkdown(html) {

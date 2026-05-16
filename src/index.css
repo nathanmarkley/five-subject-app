@@ -962,9 +962,192 @@ input { font-family: inherit; }
 .gh-input:focus { border-color: var(--accent-blue); background: #fff; }
 
 /* ============================================================
+   TASK LIST (TipTap TaskList / TaskItem)
+   ============================================================ */
+.tiptap-editor ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0.25rem;
+  margin-bottom: 0.6rem;
+}
+.tiptap-editor ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  padding: 0;
+}
+.tiptap-editor ul[data-type="taskList"] li > label {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+  user-select: none;
+}
+.tiptap-editor ul[data-type="taskList"] li > label input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--accent-blue);
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1.5px solid #aaa;
+  appearance: auto;
+}
+.tiptap-editor ul[data-type="taskList"] li > div {
+  flex: 1;
+  min-width: 0;
+}
+.tiptap-editor ul[data-type="taskList"] li[data-checked="true"] > div {
+  color: #999;
+  text-decoration: line-through;
+  text-decoration-color: #bbb;
+}
+.tiptap-editor ul[data-type="taskList"] li > div p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
    SCROLLBARS
    ============================================================ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.35); }
+
+/* ============================================================
+   MOBILE RESPONSIVE (max-width: 767px)
+   ============================================================ */
+@media (max-width: 767px) {
+  /* Top bar: taller for touch, back button visible */
+  .top-bar {
+    height: 48px;
+    min-height: 48px;
+    padding: 0 8px;
+  }
+  .top-bar-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Back button: hidden on desktop, shown on mobile */
+  .top-bar-back-btn {
+    display: flex !important;
+  }
+  .top-bar-back-btn.hidden {
+    display: none !important;
+  }
+
+  /* App shell: stack panes as overlapping full-screen layers */
+  .app-shell {
+    position: relative;
+  }
+
+  /* All panes hidden by default on mobile */
+  .notebook-shelf,
+  .subject-tabs,
+  .notes-list {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    min-width: 100% !important;
+    display: none;
+    z-index: 1;
+  }
+  .editor-pane {
+    position: absolute;
+    inset: 0;
+    display: none;
+    z-index: 1;
+  }
+
+  /* Show only the active pane */
+  .app-shell[data-mobile-pane="shelf"] .notebook-shelf { display: flex; }
+  .app-shell[data-mobile-pane="tabs"]  .subject-tabs   { display: flex; }
+  .app-shell[data-mobile-pane="list"]  .notes-list     { display: flex; }
+  .app-shell[data-mobile-pane="editor"] .editor-pane   { display: flex; }
+
+  /* Override collapsed state — not relevant on mobile */
+  .notebook-shelf.collapsed,
+  .subject-tabs.collapsed,
+  .notes-list.collapsed {
+    cursor: default;
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  /* Hide collapse toggles on mobile */
+  .collapse-toggle { display: none; }
+
+  /* Touch targets — minimum 44px */
+  .notebook-btn {
+    min-height: 52px;
+    font-size: 1rem;
+  }
+  .subject-tab {
+    min-height: 52px;
+    font-size: 0.95rem;
+    padding: 14px 16px;
+  }
+  .note-item {
+    padding: 14px 14px;
+  }
+  .note-item-title { font-size: 0.95rem; }
+  .note-item-preview { font-size: 0.8rem; }
+  .note-item-date { font-size: 0.78rem; }
+
+  /* Shelf inner padding for mobile */
+  .shelf-inner { padding: 16px 12px; }
+  .notebook-list { gap: 10px; }
+
+  /* Tabs list padding */
+  .tabs-inner { padding: 12px 0; }
+
+  /* Notes list toolbar — larger new note button */
+  .new-note-btn { width: 40px; height: 40px; }
+  .search-input { font-size: 0.9rem; padding: 8px 8px 8px 32px; }
+
+  /* Editor header */
+  .editor-header { padding: 14px 16px 8px; }
+  .note-title-input { font-size: 1.3rem; }
+  .editor-meta { flex-wrap: wrap; gap: 8px; }
+  .meta-date { font-size: 0.85rem; padding: 5px 8px; }
+
+  /* Editor scroll area */
+  .editor-scroll { padding: 16px 16px 48px; }
+  .tiptap-editor { font-size: 1rem; min-height: 200px; }
+
+  /* Editor footer */
+  .editor-footer { padding: 10px 16px; }
+  .save-btn { padding: 8px 24px; font-size: 0.9rem; }
+
+  /* Toolbar: scroll horizontally instead of wrapping */
+  .toolbar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 12px;
+    scrollbar-width: none;
+  }
+  .toolbar::-webkit-scrollbar { display: none; }
+  .tb-btn {
+    min-width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  /* Settings panel — full width on mobile */
+  .settings-panel { width: 100%; }
+
+  /* Welcome screen tweaks */
+  .welcome-content {
+    padding: 28px 24px;
+    margin: 16px;
+  }
+  .welcome-title { font-size: 1.3rem; }
+
+  /* Tags input on mobile */
+  .tags-text-input { min-width: 60px; }
+}
+
+/* Back button is hidden on desktop */
+.top-bar-back-btn { display: none; }

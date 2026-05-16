@@ -20,6 +20,9 @@ export function AppProvider({ children }) {
   const [tabsCollapsed, setTabsCollapsed] = useState(false)
   const [listCollapsed, setListCollapsed] = useState(false)
 
+  // Mobile pane navigation: 'shelf' | 'tabs' | 'list' | 'editor'
+  const [mobilePane, setMobilePane] = useState('shelf')
+
   // Restore folder on mount
   useEffect(() => {
     fs.restoreFolder()
@@ -52,6 +55,7 @@ export function AppProvider({ children }) {
     setSelectedNote({ ...noteItem, frontmatter })
     setEditorHtml(html)
     setIsDirty(false)
+    setMobilePane('editor')
   }, [isDirty, selectedNote, fs])
 
   const saveNote = useCallback(async () => {
@@ -96,6 +100,7 @@ export function AppProvider({ children }) {
     setSelectedNote({ fileHandle, fileName: slug, frontmatter, title: 'New Note' })
     setEditorHtml('<p></p>')
     setIsDirty(false)
+    setMobilePane('editor')
   }, [currentSubject, fs])
 
   const updateFrontmatter = useCallback((key, value) => {
@@ -188,6 +193,7 @@ export function AppProvider({ children }) {
       shelfCollapsed, setShelfCollapsed,
       tabsCollapsed, setTabsCollapsed,
       listCollapsed, setListCollapsed,
+      mobilePane, setMobilePane,
       currentNotebook, currentSubject, currentNotes,
       selectNote, saveNote, newNote,
       removeNote, removeSubject, removeNotebook,
