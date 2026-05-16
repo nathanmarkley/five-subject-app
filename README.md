@@ -9,7 +9,7 @@ A note-taking app that works like a physical five-subject notebook. Your notes a
 - Images can be resized and aligned right in the editor
 - Saves to plain text files on your computer — easy to read, search, and back up
 - Works offline after the first load
-- Installable as a desktop or mobile app
+- Installable as a desktop app via Chrome or Edge
 
 ## Saving & backing up notes
 
@@ -24,7 +24,7 @@ No account required. No subscription. Your notes, your choice.
 
 ## Browser support
 
-Requires **Chrome, Edge, or Opera** (desktop or Android). Safari and Firefox are not supported — they don't allow web apps to read and write local files directly. Chrome on Android works; iOS is not supported yet.
+Requires **Chrome, Edge, or Opera** (desktop or Android). Safari and Firefox are not supported — they don't allow web apps to read and write local files directly. Chrome on Android may work depending on your device and OS version. iOS is not supported yet — a native mobile app is on the roadmap.
 
 ## How your notes are stored
 
