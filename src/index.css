@@ -1151,3 +1151,22 @@ input { font-family: inherit; }
 
 /* Back button is hidden on desktop */
 .top-bar-back-btn { display: none; }
+
+/* ============================================================
+   UNSUPPORTED BROWSER SCREEN
+   ============================================================ */
+.unsupported-screen {
+  display: flex;
+  height: 100%;
+  overflow-y: auto;
+  padding: 16px;
+  background: var(--wood-bg);
+}
+/* margin: auto centers the card but still lets it scroll on short screens */
+.unsupported-screen .welcome-content {
+  width: 100%;
+  margin: auto;
+}
+.unsupported-screen .welcome-hint code {
+  overflow-wrap: anywhere;
+}
