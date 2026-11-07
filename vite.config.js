@@ -19,7 +19,6 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      injectRegister: false,
       includeAssets: ['icons/icon-192.png', 'icons/icon-512.png'],
       manifest: {
         name: 'Five Subject Notebook App (working title)',
