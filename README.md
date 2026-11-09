@@ -2,6 +2,9 @@
 
 A note-taking app that works like a physical five-subject notebook. Your notes are saved as plain files on your own device — no account, no cloud, no subscription required.
 
+### Link to app 
+https://notebook.nathanmarkley.net/ 
+
 ## What it does
 
 - Organizes notes by **Notebooks → Subjects → Notes** — just like a real notebook
