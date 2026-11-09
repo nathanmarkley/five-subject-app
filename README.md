@@ -17,14 +17,12 @@ Ctrl+S (or the Save button) saves your note instantly to your chosen folder on y
 
 You can back them up any way you like:
 - Copy the folder to an external drive or USB
-- Sync with Dropbox, OneDrive, or iCloud
-- Use GitHub Desktop to push to a private GitHub repo for version history
 
 No account required. No subscription. Your notes, your choice.
 
 ## Browser support
 
-Requires **Chrome, Edge, or Opera** (desktop or Android). Safari and Firefox are not supported — they don't allow web apps to read and write local files directly. Chrome on Android may work depending on your device and OS version. iOS is not supported yet — a native mobile app is on the roadmap.
+Requires **Chrome or Edge** (desktop). Safari and Firefox are not supported — they don't allow web apps to read and write local files directly. iOS is not supported yet — a native mobile app is on the roadmap.
 
 ## How your notes are stored
 
@@ -36,8 +34,6 @@ your-notes-folder/
 │   └── subject-name/
 │       └── note-title.md
 ```
-
-Each note is a plain text file you can open in any text editor.
 
 ## Running locally (for developers)
 
